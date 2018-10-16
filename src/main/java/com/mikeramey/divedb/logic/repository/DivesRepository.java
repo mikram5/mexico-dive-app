@@ -10,5 +10,9 @@ public interface DivesRepository {
 
     List<Dive> getAllDives();
 
+    List<Dive> getByDate(String date);
+
+    List<Dive> getByLocation();
+
 }
 

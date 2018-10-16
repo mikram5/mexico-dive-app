@@ -2,6 +2,7 @@ package com.mikeramey.divedb.logic.model;
 
 public class Dive {
 
+    private Integer id;
     private String date;
     private String location;
     private double duration;

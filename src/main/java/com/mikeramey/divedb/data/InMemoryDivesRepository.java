@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class InMemoryDivesRepository implements DivesRepository {
@@ -47,4 +48,15 @@ public class InMemoryDivesRepository implements DivesRepository {
         return diveList;
     }
 
+    @Override
+    public List<Dive> getByDate(String date) {
+        return diveList.stream()
+                .filter(dive -> dive.getDate().equals(date))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Dive> getByLocation() {
+        return null;
+    }
 }

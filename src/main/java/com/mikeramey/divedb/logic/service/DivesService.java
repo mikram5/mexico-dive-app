@@ -24,4 +24,13 @@ public class DivesService {
         return dive;
     }
 
+    public List<Dive> getByDate(String date) {
+        return divesRepository.getByDate(date);
+    }
+
+    public List<Dive> getByLocation(String location) {
+
+        List<Dive> diveList = divesRepository.getByLocation();
+        return diveList;
+    }
 }
