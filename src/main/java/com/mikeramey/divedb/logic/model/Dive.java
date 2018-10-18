@@ -1,20 +1,42 @@
 package com.mikeramey.divedb.logic.model;
 
+import java.time.LocalDate;
+
 public class Dive {
 
     private Integer id;
-    private String date;
+    private String name;
+    private LocalDate date;
     private String location;
-    private double duration;
-    private double depth;
+    private Double durationInMinutes;
+    private Double depthInMeters;
     private String waterCondition;
-    private boolean safetyStop;
+    private Boolean safetyStop;
 
-    public String getDate() {
+    public Dive() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -26,20 +48,20 @@ public class Dive {
         this.location = location;
     }
 
-    public double getDuration() {
-        return duration;
+    public Double getDurationInMinutes() {
+        return durationInMinutes;
     }
 
-    public void setDuration(double duration) {
-        this.duration = duration;
+    public void setDurationInMinutes(Double durationInMinutes) {
+        this.durationInMinutes = durationInMinutes;
     }
 
-    public double getDepth() {
-        return depth;
+    public Double getDepthInMeters() {
+        return depthInMeters;
     }
 
-    public void setDepth(double depth) {
-        this.depth = depth;
+    public void setDepthInMeters(Double depthInMeters) {
+        this.depthInMeters = depthInMeters;
     }
 
     public String getWaterCondition() {
@@ -50,23 +72,11 @@ public class Dive {
         this.waterCondition = waterCondition;
     }
 
-    public boolean isSafetyStop() {
+    public Boolean getSafetyStop() {
         return safetyStop;
     }
 
-    public void setSafetyStop(boolean safetyStop) {
+    public void setSafetyStop(Boolean safetyStop) {
         this.safetyStop = safetyStop;
-    }
-
-    @Override
-    public String toString() {
-        return "Dive{" +
-                "date='" + date + '\'' +
-                ", location='" + location + '\'' +
-                ", duration=" + duration +
-                ", depth=" + depth +
-                ", waterCondition='" + waterCondition + '\'' +
-                ", safetyStop=" + safetyStop +
-                '}';
     }
 }
