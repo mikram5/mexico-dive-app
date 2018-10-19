@@ -1,4 +1,4 @@
-package com.mikeramey.divedb.presentation;
+package com.mikeramey.divedb.presentation.api;
 
 import com.mikeramey.divedb.logic.service.DivesStatisticsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("/user/statistics")

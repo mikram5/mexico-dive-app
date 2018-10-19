@@ -1,4 +1,4 @@
-package com.mikeramey.divedb.presentation;
+package com.mikeramey.divedb.presentation.api;
 
 public class Statistic {
 

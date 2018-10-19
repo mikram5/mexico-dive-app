@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/head :: head"></div>
+</head>
+
+<body>
+<h1>Welcome to the Diving app</h1>
+
+<div th:replace="fragments/navigation :: navigation"></div>
+
+<p th:text=" 'Hello, today is ' + ${date}"/>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/head :: head"></div>
+</head>
+
+<body>
+
+<div th:replace="fragments/navigation :: navigation"></div>
+
+
+<h1>Your Dives</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th> Name</th>
+        <th> Date</th>
+        <th> Location</th>
+        <th> Duration</th>
+        <th> Depth (meters)</th>
+        <th> Water Condition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${dives.empty}">
+        <td colspan="2"> No Dives Available</td>
+    </tr>
+    <tr th:each="dive : ${dives}">
+        <td th:text="${dive.name}"></td>
+        <td th:text="${dive.date}"></td>
+        <td th:text="${dive.location}"></td>
+        <td th:text="${dive.durationInMinutes}"></td>
+        <td th:text="${dive.depthInMeters}"></td>
+        <td th:text="${dive.waterCondition}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="home" >Home</a>
+
+</body>
+</html>

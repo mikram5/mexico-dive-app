@@ -1,4 +1,4 @@
-package com.mikeramey.divedb.presentation;
+package com.mikeramey.divedb.presentation.api;
 
 import com.mikeramey.divedb.logic.model.Dive;
 import com.mikeramey.divedb.logic.service.DivesService;
@@ -11,13 +11,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user/logbook/dives/")
-public class DivesController {
+public class DivesApiController {
 
     @Resource
     private DivesService divesService;
 
     @Autowired
-    public DivesController(DivesService divesService) { this.divesService = divesService; }
+    public DivesApiController(DivesService divesService) { this.divesService = divesService; }
 
     @PostMapping
     public Dive save(@RequestBody Dive dive) {
