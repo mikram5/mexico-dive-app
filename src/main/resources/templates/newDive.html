@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="fragments/head :: head"></div>
+</head>
+
+<body>
+<div th:replace="fragments/navigation :: navigation"></div>
+
+<h1>Enter a New Dive</h1>
+
+<form  th:action="@{/newDive}" th:object="${dive}" method="POST">
+    <div class="form-row">
+        <div class="col-md-4 mb-3">
+            <label for="name">Name</label>
+            <!--change the quotes!!!!!!!!!!!!!!!!!!!!!!!-->
+            <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="Name" required>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="date">Date</label>
+            <input type="date" class="form-control" id="date" th:field="*{date}" placeholder="Date" required>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="location">Location</label>
+            <input type="text" class="form-control" id="location" th:field="*{location}" placeholder="Location" required>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="duration">Duration</label>
+            <input type="number" class="form-control" id="duration" th:field="*{durationInMinutes}" placeholder="Duration" required>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="depth">Depth</label>
+            <input type="number" class="form-control" id="depth" th:field="*{depthInMeters}" placeholder="Depth" required>
+        </div>
+    </div>
+    <div class="col-md-8 mb-3">
+        <label for="waterCondition">Depth</label>
+        <input type="text" class="form-control" id="waterCondition" th:field="*{waterCondition}" placeholder="Water Condition" required>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit form</button>
+</form>
+
+</body>
+</html>

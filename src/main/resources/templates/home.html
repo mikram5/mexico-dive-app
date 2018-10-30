@@ -6,11 +6,18 @@
 </head>
 
 <body>
-<h1>Welcome to the Diving app</h1>
+<style>
+    h1 {color: blue};
+</style>
 
 <div th:replace="fragments/navigation :: navigation"></div>
 
-<p th:text=" 'Hello, today is ' + ${date}"/>
+<h1>Welcome to the Diving App</h1>
+
+
+<p th:text=" 'Today is ' + ${date}"/>
+
+<img class="irc_mi" src="https://www.frenchiesdivingbelize.com/wp-content/uploads/2016/05/Scuba-Diving-Sabah.jpg" onload="typeof google==='object'&amp;&amp;google.aft&amp;&amp;google.aft(this)" width="600" height="400" style="margin-top: 65px;" alt="Image result for diving images">"
 
 </body>
 

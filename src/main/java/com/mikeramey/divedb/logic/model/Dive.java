@@ -1,11 +1,14 @@
 package com.mikeramey.divedb.logic.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 
 public class Dive {
 
     private Integer id;
     private String name;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
     private String location;
     private Double durationInMinutes;

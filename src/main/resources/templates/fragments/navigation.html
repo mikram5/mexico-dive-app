@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<body>
-<nav th:fragment="navigation" class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" Diving Application>
+<body >
+<div th:fragment="navigation">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navigation</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/dives">Dives</a>
+                </li>
+                <li class="nav-=item">
+                    <a class="nav-link" href="/newDive">New Dive</a>
+                </li>
+
+
+            </ul>
         </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="/dives">Dives</a></li>
-        </ul>
-    </div>
-</nav>
+    </nav>
+
+</div>
 </body>
 </html>
