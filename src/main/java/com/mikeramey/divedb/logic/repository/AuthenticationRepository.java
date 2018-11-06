@@ -1,8 +1,8 @@
 package com.mikeramey.divedb.logic.repository;
 
-import com.mikeramey.divedb.presentation.api.ApiToken;
+import com.mikeramey.divedb.logic.model.ApiToken;
 
 public interface AuthenticationRepository {
 
-    ApiToken getApiToken(String username, String password);
+    ApiToken createApiToken();
 }

@@ -77,7 +77,7 @@ public class MySqlDiveRepository implements DivesRepository {
     @Override
     public List<Dive> getByLocation(String location) {
         String query = "SELECT " + ALL_FIELDS + " FROM " + TABLE_NAME + " WHERE " + " d_location = :location";
-    SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("location", location);
+        SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("location", location);
         return jdbcTemplate.query(query, namedParameters, rowMapper);
 }
 
