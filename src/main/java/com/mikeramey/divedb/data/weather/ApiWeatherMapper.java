@@ -1,5 +1,6 @@
-package com.mikeramey.divedb.data.apiWeatherResponse;
+package com.mikeramey.divedb.data.weather;
 
+import com.mikeramey.divedb.data.weather.model.ApiWeatherResponse;
 import com.mikeramey.divedb.logic.model.Weather;
 
 public class ApiWeatherMapper {

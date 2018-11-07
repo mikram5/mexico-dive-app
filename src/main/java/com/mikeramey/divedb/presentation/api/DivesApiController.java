@@ -10,10 +10,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user/logbook/dives/")
+@RequestMapping("/user/logbook/dives")
 public class DivesApiController {
 
-    @Resource
     private DivesService divesService;
 
     @Autowired
@@ -26,7 +25,6 @@ public class DivesApiController {
 
     @GetMapping
     public List<Dive> getAllDives() {
-
         return divesService.getAllDives();
     }
 
@@ -45,15 +43,15 @@ public class DivesApiController {
         return divesService.getById(id);
     }
 
-    @DeleteMapping
-    public void delete() {
-        divesService.delete();
+    @DeleteMapping("/{id}")
+    public Dive deleteById(@PathVariable Integer id) {
+        return divesService.deleteById(id);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteById(Integer id) {
-        divesService.deleteById(id);
-    }
+//    @PutMapping("/{id}")
+//    public Dive updateById(@PathVariable Integer id, @RequestBody Dive dive) {
+//        return divesService.updateById(id);
+//    }
 
 }
 

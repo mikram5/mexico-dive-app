@@ -1,4 +1,4 @@
-package com.mikeramey.divedb.data;
+package com.mikeramey.divedb.data.dives;
 
 import com.mikeramey.divedb.logic.model.Dive;
 import org.springframework.jdbc.core.RowMapper;

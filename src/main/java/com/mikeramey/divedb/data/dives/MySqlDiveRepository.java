@@ -1,10 +1,9 @@
-package com.mikeramey.divedb.data;
+package com.mikeramey.divedb.data.dives;
 
 import com.mikeramey.divedb.logic.model.Dive;
 import com.mikeramey.divedb.logic.repository.DivesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -57,14 +56,12 @@ public class MySqlDiveRepository implements DivesRepository {
     }
 
     @Override
-    public void delete() {
-        String query = "DELETE " + ALL_FIELDS + " FROM " + TABLE_NAME;
-
-    }
-
-    @Override
-    public void deleteById(Integer id) {
-        String query = "DELETE " + ALL_FIELDS + " FROM " + TABLE_NAME + " WHERE " + " d_id = :id ";
+    public Dive deleteById(Integer id) {
+        Dive dive = getById(id);
+        String query = "DELETE FROM " + TABLE_NAME + " WHERE " + " d_id = :id ";
+        SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id", id);
+        jdbcTemplate.update(query, namedParameters);
+        return dive;
     }
 
     @Override
@@ -79,7 +76,7 @@ public class MySqlDiveRepository implements DivesRepository {
         String query = "SELECT " + ALL_FIELDS + " FROM " + TABLE_NAME + " WHERE " + " d_location = :location";
         SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("location", location);
         return jdbcTemplate.query(query, namedParameters, rowMapper);
-}
+    }
 
 
 }

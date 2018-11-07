@@ -1,6 +1,5 @@
 package com.mikeramey.divedb.presentation.api;
 
-import com.mikeramey.divedb.data.apiWeatherResponse.ApiWeatherResponse;
 import com.mikeramey.divedb.logic.model.Weather;
 import com.mikeramey.divedb.logic.service.WeatherService;
 import org.springframework.data.repository.query.Param;

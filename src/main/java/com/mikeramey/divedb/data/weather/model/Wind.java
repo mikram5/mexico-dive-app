@@ -1,4 +1,4 @@
-package com.mikeramey.divedb.data.apiWeatherResponse;
+package com.mikeramey.divedb.data.weather.model;
 
 public class Wind {
 

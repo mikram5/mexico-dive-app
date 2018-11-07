@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 @Service
 public class UserService {
@@ -15,7 +14,7 @@ public class UserService {
     private UserRepository userRepository;
 
     @Autowired
-    UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -23,5 +22,8 @@ public class UserService {
         return userRepository.getUserByUserNameAndPassword(username, password);
     }
 
+    public void validateUser(String username, String password) {
+
+    }
 
 }

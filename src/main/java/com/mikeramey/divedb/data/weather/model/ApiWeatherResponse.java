@@ -1,4 +1,4 @@
-package com.mikeramey.divedb.data.apiWeatherResponse;
+package com.mikeramey.divedb.data.weather.model;
 
 public class ApiWeatherResponse {
     private String name;
@@ -6,12 +6,12 @@ public class ApiWeatherResponse {
     private Main main;
     private Wind wind;
     private Weather[] weather;
+    private Sys sys;
+
 
     public Sys getSys() {
         return sys;
     }
-
-    private Sys sys;
 
     public String getName() {
         return name;

@@ -18,9 +18,8 @@ public interface DivesRepository {
 
     Dive getById(Integer id);
 
-    void delete();
+    Dive deleteById(Integer id);
 
-    void deleteById(Integer id);
-
+//    Dive updateById(Integer id);
 }
 

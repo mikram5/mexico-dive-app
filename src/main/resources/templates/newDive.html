@@ -6,6 +6,11 @@
 </head>
 
 <body>
+
+<style>
+    h1 {color: blue};
+</style>
+
 <div th:replace="fragments/navigation :: navigation"></div>
 
 <h1>Enter a New Dive</h1>
@@ -37,7 +42,7 @@
         </div>
     </div>
     <div class="col-md-8 mb-3">
-        <label for="waterCondition">Depth</label>
+        <label for="waterCondition">Water Condition</label>
         <input type="text" class="form-control" id="waterCondition" th:field="*{waterCondition}" placeholder="Water Condition" required>
     </div>
     <button class="btn btn-primary" type="submit">Submit form</button>

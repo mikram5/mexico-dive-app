@@ -4,6 +4,7 @@ import com.mikeramey.divedb.logic.model.User;
 import com.mikeramey.divedb.logic.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -26,8 +27,16 @@ public class MySqlUserRepository implements UserRepository {
 
     @Override
     public User getUserByUserNameAndPassword(String username, String password) {
-        String query = "SELECT " + ALL_FIELDS + " FROM " + TABLE_NAME + " WHERE " + " u_name = :username" + " u_password = :password";
-        SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("username", username );
-        return jdbcTemplate.queryForObject(query, namedParameters, rowMapper);
+        String query = "SELECT " + ALL_FIELDS + " FROM " + TABLE_NAME + " WHERE u_name = :username u_password = :password";
+        SqlParameterSource namedParameters = new MapSqlParameterSource()
+                .addValue("username", username)
+                .addValue("password", password);
+        try {
+            return jdbcTemplate.queryForObject(query, namedParameters, rowMapper);
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
+
+
 }

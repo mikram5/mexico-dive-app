@@ -31,6 +31,7 @@ public class DivesController {
         return "newDive";
     }
 
+
     @PostMapping("/newDive")
     public String newDiveSubmit(@ModelAttribute("dive") Dive dive) {
         divesService.save(dive);

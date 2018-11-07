@@ -16,7 +16,9 @@ public class DivesService {
     private DivesRepository divesRepository;
 
     @Autowired
-    public DivesService(DivesRepository divesRepository) { this.divesRepository = divesRepository; }
+    public DivesService(DivesRepository divesRepository) {
+        this.divesRepository = divesRepository;
+    }
 
     public List<Dive> getAllDives() {
         return divesRepository.getAllDives();
@@ -27,12 +29,8 @@ public class DivesService {
         return savedDive;
     }
 
-    public void delete() {
-        divesRepository.delete();
-    }
-
-    public void deleteById(Integer id) {
-        divesRepository.deleteById(id);
+    public Dive deleteById(Integer id) {
+        return divesRepository.deleteById(id);
     }
 
     public Dive getByDate(LocalDate date) {
@@ -46,4 +44,9 @@ public class DivesService {
     public Dive getById(Integer id) {
         return divesRepository.getById(id);
     }
-}
+
+
+//    public Dive updateById(Integer id) {
+//        return divesRepository.updateById(id);
+    }
+
