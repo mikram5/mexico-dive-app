@@ -45,7 +45,17 @@ public class MySqlDiveRepository implements DivesRepository {
     @Override
     public List<Dive> getAllDives() {
         String query = "SELECT " + ALL_FIELDS + " FROM " + TABLE_NAME;
+        simulateSlowService();
         return jdbcTemplate.query(query, rowMapper);
+    }
+
+    private void simulateSlowService() {
+        try {
+            long time = 3000L;
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            throw new IllegalStateException(e);
+        }
     }
 
     @Override
@@ -60,6 +70,17 @@ public class MySqlDiveRepository implements DivesRepository {
         Dive dive = getById(id);
         String query = "DELETE FROM " + TABLE_NAME + " WHERE " + " d_id = :id ";
         SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id", id);
+        jdbcTemplate.update(query, namedParameters);
+        return dive;
+    }
+
+    @Override
+    public Dive updateById(Dive dive) {
+        String query = "UPDATE " + TABLE_NAME +
+                " SET d_date = :date, d_location = :location, d_duration_in_minutes = :durationInMinutes, " +
+                "d_depth_in_meters = :depthInMeters, d_water_condition = :waterCondition, d_safety_stop = :safetyStop, " +
+                "d_name = :name WHERE " + " d_id = :id";
+        SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(dive);
         jdbcTemplate.update(query, namedParameters);
         return dive;
     }

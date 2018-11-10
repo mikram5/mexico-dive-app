@@ -20,6 +20,6 @@ public interface DivesRepository {
 
     Dive deleteById(Integer id);
 
-//    Dive updateById(Integer id);
+    Dive updateById(Dive dive);
 }
 

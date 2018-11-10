@@ -46,7 +46,8 @@ public class DivesService {
     }
 
 
-//    public Dive updateById(Integer id) {
-//        return divesRepository.updateById(id);
+    public Dive updateById(Dive dive) {
+        return divesRepository.updateById(dive);
     }
+}
 

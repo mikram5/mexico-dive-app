@@ -48,10 +48,11 @@ public class DivesApiController {
         return divesService.deleteById(id);
     }
 
-//    @PutMapping("/{id}")
-//    public Dive updateById(@PathVariable Integer id, @RequestBody Dive dive) {
-//        return divesService.updateById(id);
-//    }
+    @PutMapping("/{id}")
+    public Dive updateById(@PathVariable Integer id, @RequestBody Dive dive) {
+        dive.setId(id);
+        return divesService.updateById(dive);
+    }
 
 }
 
