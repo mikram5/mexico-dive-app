@@ -1,4 +1,4 @@
-package com.mikeramey.divedb.data;
+package com.mikeramey.divedb.data.rowmappers;
 
 import com.mikeramey.divedb.logic.model.User;
 import org.springframework.jdbc.core.RowMapper;
@@ -6,15 +6,15 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
 public class UserRowMapper implements RowMapper<User> {
 
     @Override
     public User mapRow(ResultSet rs, int rowNum) throws SQLException {
         User user = new User();
         user.setId(rs.getInt("u_id"));
-        user.setName(rs.getString("u_name"));
+        user.setUsername(rs.getString("u_name"));
         user.setPassword(rs.getString("u_password"));
-        user.setEmail(rs.getString("u_email"));
         return user;
     }
 

@@ -1,20 +1,15 @@
 package com.mikeramey.divedb.presentation.web;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.time.LocalDate;
-
 @Controller
-public class HomeController {
+public class LoginController {
 
-    @GetMapping("/home")
+    @GetMapping("/login")
     public ModelAndView home(ModelAndView modelAndView) {
         modelAndView.setViewName("home");
         return modelAndView;
     }
-
-
 }

@@ -1,5 +1,6 @@
 package com.mikeramey.divedb.data.dives;
 
+import com.mikeramey.divedb.data.rowmappers.DiveRowMapper;
 import com.mikeramey.divedb.logic.model.Dive;
 import com.mikeramey.divedb.logic.repository.DivesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
