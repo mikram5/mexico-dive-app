@@ -25,7 +25,7 @@ public class AuthenticationController {
 
     @GetMapping
     public ApiToken createApiToken(@RequestParam String username, @RequestParam String password) {
-        User user = userService.getUserByUserNameAndPassword(username, password);
+        User user = userService.getUserByUserName(username);
 
         if (user == null) {
             return null;

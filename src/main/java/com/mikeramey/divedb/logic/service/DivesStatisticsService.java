@@ -31,9 +31,7 @@ public class DivesStatisticsService {
 }
 
 
-//    public double planDive(double firstDiveDepth, double firstDiveLength,double secondDiveDepth, double secondDiveLength ){
-//        return 100;
-//    }
+
 
 
 
