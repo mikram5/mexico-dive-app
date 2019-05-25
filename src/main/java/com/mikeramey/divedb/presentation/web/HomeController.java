@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Controller
 public class HomeController {
 
-    @GetMapping("/home")
+    @GetMapping("/")
     public ModelAndView home(ModelAndView modelAndView) {
         modelAndView.setViewName("home");
         return modelAndView;
