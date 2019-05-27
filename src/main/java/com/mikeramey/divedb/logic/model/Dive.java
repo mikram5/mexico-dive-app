@@ -7,16 +7,22 @@ import java.time.LocalDate;
 public class Dive {
 
     private Integer id;
-    private String name;
+    private String location;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
-    private String location;
     private Double durationInMinutes;
     private Double depthInMeters;
     private String waterCondition;
-    private Boolean safetyStop;
 
     public Dive() {
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public Integer getId() {
@@ -27,28 +33,12 @@ public class Dive {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public LocalDate getDate() {
         return date;
     }
 
     public void setDate(LocalDate date) {
         this.date = date;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 
     public Double getDurationInMinutes() {
@@ -75,11 +65,4 @@ public class Dive {
         this.waterCondition = waterCondition;
     }
 
-    public Boolean getSafetyStop() {
-        return safetyStop;
-    }
-
-    public void setSafetyStop(Boolean safetyStop) {
-        this.safetyStop = safetyStop;
-    }
 }

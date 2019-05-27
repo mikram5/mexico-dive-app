@@ -35,7 +35,7 @@ public class MySqlDiveRepository implements DivesRepository {
     public Dive save(Dive dive) {
         String query = "INSERT INTO " + TABLE_NAME +
                 " VALUES(null,  :date, :location, :durationInMinutes," +
-                "        :depthInMeters, :waterCondition, :safetyStop ,:name )";
+                "        :depthInMeters, :waterCondition)";
         KeyHolder key = new GeneratedKeyHolder();
         SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(dive);
         jdbcTemplate.update(query, namedParameters, key);
@@ -79,8 +79,7 @@ public class MySqlDiveRepository implements DivesRepository {
     public Dive updateById(Dive dive) {
         String query = "UPDATE " + TABLE_NAME +
                 " SET d_date = :date, d_location = :location, d_duration_in_minutes = :durationInMinutes, " +
-                "d_depth_in_meters = :depthInMeters, d_water_condition = :waterCondition, d_safety_stop = :safetyStop, " +
-                "d_name = :name WHERE " + " d_id = :id";
+                "d_depth_in_meters = :depthInMeters, d_water_condition = :waterCondition WHERE " + " d_id = :id";
         SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(dive);
         jdbcTemplate.update(query, namedParameters);
         return dive;
