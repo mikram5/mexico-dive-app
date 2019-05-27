@@ -20,8 +20,8 @@ public class DivesService {
         this.divesRepository = divesRepository;
     }
 
-    public List<Dive> getAllDives() {
-        return divesRepository.getAllDives();
+    public List<Dive> getDivesByUserId(int userId) {
+        return divesRepository.getDivesByUserId(userId);
     }
 
     public Dive save(Dive dive) {
@@ -29,25 +29,16 @@ public class DivesService {
         return savedDive;
     }
 
-    public Dive deleteById(Integer id) {
-        return divesRepository.deleteById(id);
+    public void deleteDiveByUserId(int id) {
+        divesRepository.deleteDiveById(id);
     }
 
-    public Dive getByDate(LocalDate date) {
-        return divesRepository.getByDate(date);
+    public List<Dive> getDiveByLocation(String location) {
+        return divesRepository.getDiveByLocation(location);
     }
 
-    public List<Dive> getByLocation(String location) {
-        return divesRepository.getByLocation(location);
-    }
-
-    public Dive getById(Integer id) {
-        return divesRepository.getById(id);
-    }
-
-
-    public Dive updateById(Dive dive) {
-        return divesRepository.updateById(dive);
+    public Dive updateDiveById(int id, Dive dive) {
+        return divesRepository.updateDiveById(id, dive);
     }
 }
 

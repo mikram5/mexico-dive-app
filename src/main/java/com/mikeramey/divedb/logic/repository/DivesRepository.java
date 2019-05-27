@@ -10,16 +10,12 @@ public interface DivesRepository {
 
     Dive save(Dive dive);
 
-    List<Dive> getAllDives();
+    List<Dive> getDivesByUserId(int userId);
 
-    Dive getByDate(LocalDate date);
+    List<Dive> getDiveByLocation(String location);
 
-    List<Dive> getByLocation(String location);
+    void deleteDiveById(int id);
 
-    Dive getById(Integer id);
-
-    Dive deleteById(Integer id);
-
-    Dive updateById(Dive dive);
+    Dive updateDiveById(int id, Dive dive);
 }
 
