@@ -3,18 +3,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:replace="fragments/header :: header"></div>
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet"
+          type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="css/masthead.css" rel="stylesheet">
 </head>
 
 <body>
-
 <div th:replace="fragments/navbar :: navbar"></div>
 
-<h1>Welcome to the Diving App</h1>
+<!--Masthead -->
+<header class="masthead text-white text-center">
+    <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    <h1 class="mb-5">Ready to Dive?</h1>
+                </div>
+            </div>
+        </div>
+</header>
 
-
-<img class="irc_mi" src="https://www.frenchiesdivingbelize.com/wp-content/uploads/2016/05/Scuba-Diving-Sabah.jpg"
-     width="600" height="400" style="margin-top: 65px;" alt="Image result for diving images">
 
 </body>
-
 </html>
