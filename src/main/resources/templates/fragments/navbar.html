@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4>
 <head>
 
     <div th:fragment="navbar">
@@ -12,15 +12,25 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <!--<div class="collapse navbar-collapse" id="navbarNavAltMarkup">-->
-                <!--<ul class="navbar-nav d-flex">-->
-                    <!--<li><a class="nav-item nav-link large-nav-link">-->
-                        <!--th:classappend="${#httpServletRequest.getRequestURI() == '/dives' ? 'active':''}"-->
-                        <!--href="/dives">My Dives</a></li>-->
-                <!--</ul>-->
-            <!--</div>-->
-        </nav>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <ul class="navbar-nav d-flex">
+                    <li><a class="nav-item nav-link large-nav-link"
+                           th:classappend="${#httpServletRequest.getRequestURI() == '/dives' ? 'active':''}"
+                           href="/dives">My Dives</a></li>
+                </ul>
 
+                <ul class="navbar-nav d-flex ml-auto">
+                    <li><a sec:authorize="isAnonymous()" class="nav-item nav-link large-nav-link"href="/registration">
+                        Register</a></li>
+                        <!--<i class="fa fa-user"></i>&nbsp; Register</a></li>-->
+                    <li><a sec:authorize="isAnonymous()" class="nav-item nav-link large-nav-link" href="/login">
+                        <i class="fa fa-sign-in"></i>&nbsp; Sign In</a></li>
+                    <li><a class="nav-item nav-link"
+                           sec:authorize="isAuthenticated()"
+                           href="/logout"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
+                </ul>
+            </div>
+        </nav>
     </div>
 </head>
 <body></body>
