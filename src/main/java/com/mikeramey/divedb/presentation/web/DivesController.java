@@ -2,41 +2,59 @@ package com.mikeramey.divedb.presentation.web;
 
 import com.mikeramey.divedb.logic.model.Dive;
 import com.mikeramey.divedb.logic.service.DivesService;
+import com.mikeramey.divedb.logic.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-
-import javax.annotation.Resource;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
+@RequestMapping("/")
 public class DivesController {
 
-    @Resource
+    @Autowired
     private DivesService divesService;
+
+    @Autowired
+    private UserService userService;
 
 
     @GetMapping("/dives")
-    public String home(Model model) {
-        model.addAttribute("dives", divesService.getAllDives());
-        return "dives";
+    public ModelAndView allDives(ModelAndView modelAndView) {
+        modelAndView.addObject("dive", divesService.getDivesByUserId(userService.getCurrentUserId()));
+        modelAndView.setViewName("/dives");
+        return modelAndView;
     }
 
-    @GetMapping("/newDive")
-    public String newDive(Model model) {
-        model.addAttribute("dive", new Dive());
-        return "newDive";
+    @GetMapping("/addNewDive")
+//    public String newDive(Model model) {
+//        model.addAttribute("dive", new Dive());
+//        return "addNewDive";
+//    }
+    public ModelAndView addNewDive(ModelAndView modelAndView) {
+        Dive dive = new Dive();
+
+        modelAndView.setViewName("addNewDive");
+        modelAndView.addObject("dive", dive);
+        return modelAndView;
     }
 
-
-    @PostMapping("/newDive")
-    public String newDiveSubmit(@ModelAttribute("dive") Dive dive) {
+    @PostMapping("/addNewDive")
+//    public String newDiveSubmit(@ModelAttribute("dive") Dive dive) {
+//        divesService.save(dive);
+//        return "addNewDive";
+//    }
+    public ModelAndView dive(@ModelAttribute Dive dive, ModelAndView modelAndView) {
+        dive.setUserId(userService.getCurrentUserId());
         divesService.save(dive);
-        return "newDive";
+        modelAndView.setViewName("dives");
+        return modelAndView;
     }
 
-
+    @GetMapping("/deletedive")
+    public RedirectView deleteDive(@RequestParam(name = "id") Integer id) {
+        divesService.deleteDiveByUserId(id);
+        return new RedirectView("/dives");
+    }
 }

@@ -7,6 +7,7 @@ import java.time.LocalDate;
 public class Dive {
 
     private Integer id;
+    private Integer userId;
     private String location;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
@@ -15,6 +16,29 @@ public class Dive {
     private String waterCondition;
 
     public Dive() {
+    }
+
+    public Dive(Integer id, Integer userId, String location, LocalDate date, Double durationInMinutes, Double depthInMeters, String waterCondition) {
+        this.id = id;
+        this.userId = userId;
+        this.location = location;
+        this.date = date;
+        this.durationInMinutes = durationInMinutes;
+        this.depthInMeters = depthInMeters;
+        this.waterCondition = waterCondition;
+    }
+
+    @Override
+    public String toString() {
+        return "Dive{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", location='" + location + '\'' +
+                ", date=" + date +
+                ", durationInMinutes=" + durationInMinutes +
+                ", depthInMeters=" + depthInMeters +
+                ", waterCondition='" + waterCondition + '\'' +
+                '}';
     }
 
     public String getLocation() {
@@ -31,6 +55,14 @@ public class Dive {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public LocalDate getDate() {

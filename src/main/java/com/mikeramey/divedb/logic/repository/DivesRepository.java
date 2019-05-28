@@ -15,7 +15,5 @@ public interface DivesRepository {
     List<Dive> getDiveByLocation(String location);
 
     void deleteDiveById(int id);
-
-    Dive updateDiveById(int id, Dive dive);
 }
 

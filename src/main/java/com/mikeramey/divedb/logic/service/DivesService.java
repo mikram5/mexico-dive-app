@@ -37,8 +37,5 @@ public class DivesService {
         return divesRepository.getDiveByLocation(location);
     }
 
-    public Dive updateDiveById(int id, Dive dive) {
-        return divesRepository.updateDiveById(id, dive);
-    }
 }
 
