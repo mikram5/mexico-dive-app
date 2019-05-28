@@ -1,9 +1,9 @@
 package com.mikeramey.divedb.presentation.api;
 
 import com.mikeramey.divedb.logic.model.ApiToken;
-import com.mikeramey.divedb.logic.model.User;
+import com.mikeramey.divedb.logic.user.User;
 import com.mikeramey.divedb.logic.service.TokenService;
-import com.mikeramey.divedb.logic.service.UserService;
+import com.mikeramey.divedb.logic.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

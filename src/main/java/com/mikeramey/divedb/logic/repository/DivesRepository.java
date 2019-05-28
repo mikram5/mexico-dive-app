@@ -2,9 +2,7 @@ package com.mikeramey.divedb.logic.repository;
 
 import com.mikeramey.divedb.logic.model.Dive;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.concurrent.DelayQueue;
 
 public interface DivesRepository {
 

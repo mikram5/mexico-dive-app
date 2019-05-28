@@ -16,7 +16,9 @@ public class DivesApiController {
     private DivesService divesService;
 
     @Autowired
-    public DivesApiController(DivesService divesService) { this.divesService = divesService; }
+    public DivesApiController(DivesService divesService) {
+        this.divesService = divesService;
+    }
 
     @PostMapping
     public Dive save(@RequestBody Dive dive) {
@@ -24,35 +26,29 @@ public class DivesApiController {
     }
 
     @GetMapping
-    public List<Dive> getAllDives() {
-        return divesService.getAllDives();
+    public List<Dive> getDivesByUserId(@PathVariable int userId) {
+        return divesService.getDivesByUserId(userId);
     }
 
-    @GetMapping("/date/{date}")
-    public Dive getByDate(@PathVariable LocalDate date) {
-        return divesService.getByDate(date);
-    }
+//    @GetMapping("/date/{date}")
+//    public Dive getByDate(@PathVariable LocalDate date) {
+//        return divesService.getByDate(date);
+//    }
 
     @GetMapping("/location/{location}")
     public List<Dive> getByLocation(@PathVariable String location) {
-        return divesService.getByLocation(location);
+        return divesService.getDiveByLocation(location);
     }
 
-    @GetMapping("/{id}")
-    public Dive getById(@PathVariable Integer id) {
-        return divesService.getById(id);
-    }
+//    @GetMapping("/{id}")
+//    public Dive getById(@PathVariable Integer id) {
+//        return divesService.getById(id);
+//    }
 
-    @DeleteMapping("/{id}")
-    public Dive deleteById(@PathVariable Integer id) {
-        return divesService.deleteById(id);
-    }
-
-    @PutMapping("/{id}")
-    public Dive updateById(@PathVariable Integer id, @RequestBody Dive dive) {
-        dive.setId(id);
-        return divesService.updateById(dive);
-    }
+//    @DeleteMapping("/{id}")
+//    public Dive deleteDiveById(@PathVariable int id) {
+//        return divesService.deleteDiveById(id);
+//    }
 
 }
 

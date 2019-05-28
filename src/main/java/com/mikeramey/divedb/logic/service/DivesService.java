@@ -20,22 +20,21 @@ public class DivesService {
         this.divesRepository = divesRepository;
     }
 
-    public List<Dive> getDivesByUserId(int userId) {
-        return divesRepository.getDivesByUserId(userId);
-    }
-
     public Dive save(Dive dive) {
         Dive savedDive = divesRepository.save(dive);
         return savedDive;
     }
 
-    public void deleteDiveByUserId(int id) {
-        divesRepository.deleteDiveById(id);
+    public List<Dive> getDivesByUserId(int userId) {
+        return divesRepository.getDivesByUserId(userId);
     }
 
     public List<Dive> getDiveByLocation(String location) {
         return divesRepository.getDiveByLocation(location);
     }
 
+    public void deleteDiveById(int id) {
+        divesRepository.deleteDiveById(id);
+    }
 }
 

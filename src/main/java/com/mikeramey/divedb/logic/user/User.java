@@ -1,4 +1,4 @@
-package com.mikeramey.divedb.logic.model;
+package com.mikeramey.divedb.logic.user;
 
 public class User {
 

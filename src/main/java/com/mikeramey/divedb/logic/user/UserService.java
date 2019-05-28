@@ -1,10 +1,10 @@
-package com.mikeramey.divedb.logic.service;
+package com.mikeramey.divedb.logic.user;
 
 import com.mikeramey.divedb.logic.model.Role;
-import com.mikeramey.divedb.logic.model.User;
+import com.mikeramey.divedb.logic.user.User;
 import com.mikeramey.divedb.logic.repository.RoleRepository;
-import com.mikeramey.divedb.logic.repository.UserRepository;
-import com.mikeramey.divedb.logic.repository.UserRoleRepository;
+import com.mikeramey.divedb.logic.user.UserRepository;
+import com.mikeramey.divedb.logic.user.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;

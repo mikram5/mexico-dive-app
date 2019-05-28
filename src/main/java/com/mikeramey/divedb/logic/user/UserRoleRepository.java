@@ -1,4 +1,4 @@
-package com.mikeramey.divedb.logic.repository;
+package com.mikeramey.divedb.logic.user;
 
 public interface UserRoleRepository {
 

@@ -1,4 +1,4 @@
-package com.mikeramey.divedb.data;
+package com.mikeramey.divedb.data.repositories;
 
 import com.mikeramey.divedb.data.rowmappers.RoleRowMapper;
 import com.mikeramey.divedb.logic.model.Role;

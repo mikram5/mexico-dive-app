@@ -1,6 +1,6 @@
-package com.mikeramey.divedb.data;
+package com.mikeramey.divedb.data.repositories;
 
-import com.mikeramey.divedb.logic.repository.UserRoleRepository;
+import com.mikeramey.divedb.logic.user.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;

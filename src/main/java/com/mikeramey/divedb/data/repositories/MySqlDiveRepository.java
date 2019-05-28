@@ -1,4 +1,4 @@
-package com.mikeramey.divedb.data.dives;
+package com.mikeramey.divedb.data.repositories;
 
 import com.mikeramey.divedb.data.rowmappers.DiveRowMapper;
 import com.mikeramey.divedb.logic.model.Dive;
@@ -13,15 +13,14 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Primary
 @Repository
 public class MySqlDiveRepository implements DivesRepository {
 
-    private static final String TABLE_NAME = "dives";
-    private static final String ALL_FIELDS = "*";
+    private final String TABLE_NAME = "dives";
+    private final String ALL_FIELDS = "*";
     private final DiveRowMapper rowMapper = new DiveRowMapper();
 
     private NamedParameterJdbcTemplate jdbcTemplate;
@@ -34,7 +33,7 @@ public class MySqlDiveRepository implements DivesRepository {
     @Override
     public Dive save(Dive dive) {
         String query = "INSERT INTO " + TABLE_NAME +
-                " VALUES(null,  :date, :location, :durationInMinutes," +
+                " VALUES(null,  :userId, :date, :location, :durationInMinutes," +
                 "        :depthInMeters, :waterCondition)";
         KeyHolder key = new GeneratedKeyHolder();
         SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(dive);
@@ -44,60 +43,31 @@ public class MySqlDiveRepository implements DivesRepository {
     }
 
     @Override
-    public List<Dive> getAllDives() {
-        String query = "SELECT " + ALL_FIELDS + " FROM " + TABLE_NAME;
-        simulateSlowService();
-        return jdbcTemplate.query(query, rowMapper);
-    }
-
-    private void simulateSlowService() {
-        try {
-            long time = 3000L;
-            Thread.sleep(time);
-        } catch (InterruptedException e) {
-            throw new IllegalStateException(e);
-        }
+    public List<Dive> getDivesByUserId(int userId) {
+        String query = "SELECT " + ALL_FIELDS + " FROM " + TABLE_NAME + " WHERE " + " d_u_id = :userId ";
+        SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("userId", userId);
+        return jdbcTemplate.query(query, namedParameters, rowMapper);
     }
 
     @Override
-    public Dive getById(Integer id) {
-        String query = "SELECT " + ALL_FIELDS + " FROM " + TABLE_NAME + " WHERE " + " d_id = :id ";
-        SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id", id);
-        return jdbcTemplate.queryForObject(query, namedParameters, rowMapper);
-    }
-
-    @Override
-    public Dive deleteById(Integer id) {
-        Dive dive = getById(id);
+    public void deleteDiveById(int id) {
         String query = "DELETE FROM " + TABLE_NAME + " WHERE " + " d_id = :id ";
         SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id", id);
         jdbcTemplate.update(query, namedParameters);
-        return dive;
     }
 
     @Override
-    public Dive updateById(Dive dive) {
-        String query = "UPDATE " + TABLE_NAME +
-                " SET d_date = :date, d_location = :location, d_duration_in_minutes = :durationInMinutes, " +
-                "d_depth_in_meters = :depthInMeters, d_water_condition = :waterCondition WHERE " + " d_id = :id";
-        SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(dive);
-        jdbcTemplate.update(query, namedParameters);
-        return dive;
-    }
-
-    @Override
-    public Dive getByDate(LocalDate date) {
-        String query = "SELECT " + ALL_FIELDS + " FROM " + TABLE_NAME + " WHERE " + " d_date = :date";
-        SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("date", date);
-        return jdbcTemplate.queryForObject(query, namedParameters, rowMapper);
-    }
-
-    @Override
-    public List<Dive> getByLocation(String location) {
+    public List<Dive> getDiveByLocation(String location) {
         String query = "SELECT " + ALL_FIELDS + " FROM " + TABLE_NAME + " WHERE " + " d_location = :location";
         SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("location", location);
         return jdbcTemplate.query(query, namedParameters, rowMapper);
     }
 
+//    @Override
+//    public Dive getByDate(LocalDate date) {
+//        String query = "SELECT " + ALL_FIELDS + " FROM " + TABLE_NAME + " WHERE " + " d_date = :date";
+//        SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("date", date);
+//        return jdbcTemplate.queryForObject(query, namedParameters, rowMapper);
 
+//    }
 }

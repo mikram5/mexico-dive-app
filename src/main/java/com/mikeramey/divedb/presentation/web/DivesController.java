@@ -2,7 +2,7 @@ package com.mikeramey.divedb.presentation.web;
 
 import com.mikeramey.divedb.logic.model.Dive;
 import com.mikeramey.divedb.logic.service.DivesService;
-import com.mikeramey.divedb.logic.service.UserService;
+import com.mikeramey.divedb.logic.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +23,7 @@ public class DivesController {
     @GetMapping("/dives")
     public ModelAndView allDives(ModelAndView modelAndView) {
         modelAndView.addObject("dive", divesService.getDivesByUserId(userService.getCurrentUserId()));
-        modelAndView.setViewName("/dives");
+        modelAndView.setViewName("/repositories");
         return modelAndView;
     }
 
@@ -54,7 +54,7 @@ public class DivesController {
 
     @GetMapping("/deletedive")
     public RedirectView deleteDive(@RequestParam(name = "id") Integer id) {
-        divesService.deleteDiveByUserId(id);
-        return new RedirectView("/dives");
+        divesService.deleteDiveById(id);
+        return new RedirectView("/repositories");
     }
 }
