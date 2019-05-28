@@ -1,22 +1,47 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-
 <head>
     <div th:replace="fragments/header :: header"></div>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet"
+          type="text/css">
 </head>
 
-<body>
-
+<body class="bg-light">
 
 <div th:replace="fragments/navbar :: navbar"></div>
+<div class="container col-sm-3 login">
+    <h3 class="top-padding text-center">Please sign in</h3>
+    <div th:if="${#httpServletRequest.getParameter('error') == 'true'}"
+         class="container card error-bg create-account">
+        <p class="my-auto">Incorrect username or password</p>
+    </div>
+    <div class="container bg-white card">
+        <form action="login" method="post">
+            <div class="form-group row">
+                <label for="user" class="col-sm-12 col-form-label"></label>
+                <div class="col-sm-12">
+                    <input required="required" type="text" name="username" class="form-control" id="user" placeholder="username">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="password" class="col-sm-12 col-form-label"></label>
+                <div class="col-sm-12">
+                    <input required="required" type="password" name="password" class="form-control" id="password" placeholder="password">
+                </div>
+            </div>
 
-<style>
-    h1 {color: blue};
+            <div class="form-group row">
+                <div class="col-sm-12 text-center">
+                    <button type="submit" class="col-sm-8 btn btn-success">Login</button>
+                </div>
+            </div>
+        </form>
+    </div>
 
-</style>
 
-<h1>Sign In</h1>
+</div>
+
 
 </body>
 </html>
