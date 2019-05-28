@@ -1,6 +1,6 @@
 package com.mikeramey.divedb.data.rowmappers;
 
-import com.mikeramey.divedb.logic.user.User;
+import com.mikeramey.divedb.logic.model.User;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

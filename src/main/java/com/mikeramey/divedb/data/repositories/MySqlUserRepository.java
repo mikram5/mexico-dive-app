@@ -1,7 +1,7 @@
 package com.mikeramey.divedb.data.repositories;
 
 import com.mikeramey.divedb.data.rowmappers.UserRowMapper;
-import com.mikeramey.divedb.logic.user.User;
+import com.mikeramey.divedb.logic.model.User;
 import com.mikeramey.divedb.logic.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;

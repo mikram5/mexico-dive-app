@@ -1,13 +1,13 @@
-package com.mikeramey.divedb.logic.user;
+package com.mikeramey.divedb.logic.model;
+
+import org.hibernate.validator.constraints.Length;
 
 public class User {
 
     private Integer id;
     private String username;
+    @Length(min = 7, message = "Password must have at least 7 characters")
     private String password;
-    private String email;
-
-
 
     public User() {
     }
@@ -36,11 +36,4 @@ public class User {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }
