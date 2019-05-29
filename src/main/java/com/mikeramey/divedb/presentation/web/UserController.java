@@ -49,6 +49,7 @@ public class UserController {
             userService.saveUser(user);
             modelAndView.addObject("successMessage", "true");
             modelAndView.addObject("user", new User());
+            modelAndView.setViewName("registration");
         }
         return modelAndView;
     }

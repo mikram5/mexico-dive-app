@@ -1,16 +1,58 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head>
+    <title>Registration Form</title>
+
     <div th:replace="fragments/header :: header"></div>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet"
+          type="text/css">
 </head>
-
-<body>
-
+<body class="bg-light">
 
 <div th:replace="fragments/navbar :: navbar"></div>
+<div class="container col-sm-3 login">
+    <h3 class="'top-padding text-center">Create an Account</h3>
+    <form autocomplete="off" action="#" th:action="@{/registration}"
+          th:object="${user}" method="post" class="form-horizontal"
+          role="form">
+        <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+             class="container card error-bg create-account">
+            <p class="my-auto">Username already exists</p>
+        </div>
+        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+             class="container card error-bg create-account">
+            <p class="my-auto">Invalid password</p>
+        </div>
+        <div class="container bg-white card">
+            <div class="form-group row">
+                <label class="col-sm-12 col-form-label" for="username"></label>
+                <div class="col-sm-12">
+                    <input required="required" class="form-control" id="username" type="text" name="username"
+                           placeholder="username">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-12 col-form-label" for="password"></label>
+                <div class="col-sm-12">
+                    <input required="required" type="password" name="password" class="form-control" id="password"
+                           placeholder="password">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-12 text-center">
+                    <button type="submit" class="col-sm-8 btn-outline-info">Sign up</button>
+                </div>
+            </div>
+        </div>
+    </form>
 
+</div>
+<div th:if="${successMessage} == 'true'" class="container card success-bg text-center create-account">
+    <p class="my-auto">Account created! <a href="/login">Please sign in.</a></p>
+</div>
+</div>
 
 </body>
 </html>
